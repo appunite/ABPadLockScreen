@@ -144,7 +144,7 @@
     
     UIButton *blankButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [blankButton setBackgroundImage:[UIImage imageNamed:@"blank"] forState:UIControlStateNormal];
-    [blankButton setBackgroundImage:[UIImage imageNamed:@"blank"] forState:UIControlStateHighlighted];
+    [blankButton setBackgroundImage:[UIImage imageNamed:@"blank-selected"] forState:UIControlStateHighlighted];
     [blankButton setFrame:CGRectMake(sevenButton.frame.origin.x, 
                                      sevenButton.frame.origin.y + sevenButton.frame.size.height - 1, 
                                      leftButtonWidth, 
