@@ -29,34 +29,17 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol ABPadLockScreenDelegate
+@protocol ABPadLockScreenDelegate <NSObject>
 @required
-- (void)unlockWasSuccessful;
-- (void)unlockWasUnsuccessful:(int)falseEntryCode afterAttemptNumber:(int)attemptNumber;
-- (void)unlockWasCancelled;
-
-@optional
-- (void)attemptsExpired;
-@end
-
-@protocol ABPadLockScreenDataSource
-@required
-- (int)unlockPasscode;
-- (NSString *)padLockScreenTitleText;
-- (NSString *)padLockScreenSubtitleText;
-- (BOOL)hasAttemptLimit;
-
-@optional
-- (int)attemptLimit;
+- (void) digitInputed:(int)diggit;
+- (void) backspaceInputed;
+- (void) xSignInputed;
 
 @end
 
 @interface ABPadLockScreen : UIViewController
-@property (nonatomic, assign) id<ABPadLockScreenDelegate> delegate;
-@property (nonatomic, assign) id<ABPadLockScreenDataSource> dataSource;
+@property (nonatomic, weak) id<ABPadLockScreenDelegate> delegate;
 
-- (id)initWithDelegate:(id<ABPadLockScreenDelegate>)aDelegate withDataSource:(id<ABPadLockScreenDataSource>)aDataSource;
-- (void)resetAttempts;
-- (void)resetLockScreen;
+- (id)initWithDelegate:(id<ABPadLockScreenDelegate>)aDelegate;
 
 @end
