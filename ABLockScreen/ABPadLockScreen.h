@@ -34,7 +34,7 @@
 - (void) digitInputed:(int)diggit;
 - (void) backspaceInputed;
 - (void) xSignInputed;
-
+- (void) sign978Inputed;
 @end
 
 @interface ABPadLockScreen : UIViewController
