@@ -40,6 +40,7 @@
 - (void)checkPin;
 - (void)lockPad;
 - (void)xButtonPressed;
+- (void)searchButtonPressed:(id)sender;
 - (UIButton *)getStyledButtonForNumber:(int)number;
 @end
 
@@ -184,25 +185,25 @@
     [xButton addTarget:self action:@selector(xButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:xButton];    
     
-    
-    UIButton *blankButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [blankButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateNormal];
-    [blankButton setBackgroundImage:[UIImage imageNamed:@"blank_button_selected"] forState:UIControlStateHighlighted];
-    [blankButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0]];
-    [blankButton setTitle:NSLocalizedString(@"Search", nil) forState:UIControlStateNormal];
-    [blankButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [blankButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [blankButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 3.0, 0.0)];
-    [blankButton setFrame:CGRectMake(CGRectGetMinX(sign978Button.frame), CGRectGetMaxY(sign978Button.frame) + 1, leftButtonWidth, buttonHeight)];
-    [self.view addSubview:blankButton];
+    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [searchButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateNormal];
+    [searchButton setBackgroundImage:[UIImage imageNamed:@"blank_button_selected"] forState:UIControlStateHighlighted];
+    [searchButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0]];
+    [searchButton setTitle:NSLocalizedString(@"Search", nil) forState:UIControlStateNormal];
+    [searchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [searchButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 3.0, 0.0)];
+    [searchButton setFrame:CGRectMake(CGRectGetMinX(sign978Button.frame), CGRectGetMaxY(sign978Button.frame) + 1, leftButtonWidth, buttonHeight)];
+    [searchButton addTarget:self action:@selector(searchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:searchButton];
 
     
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearButton setBackgroundImage:[UIImage imageNamed:@"clear_button"] forState:UIControlStateNormal];
     [clearButton setBackgroundImage:[UIImage imageNamed:@"clear_button_selected"] forState:UIControlStateHighlighted];
     [clearButton addTarget:self action:@selector(backSpaceButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [clearButton setFrame:CGRectMake(CGRectGetMaxX(blankButton.frame) + 1,
-                                     CGRectGetMinY(blankButton.frame),
+    [clearButton setFrame:CGRectMake(CGRectGetMaxX(searchButton.frame) + 1,
+                                     CGRectGetMinY(searchButton.frame),
                                      middleButtonWidth + rightButtonWidth,
                                      buttonHeight)];
     [self.view addSubview:clearButton];
@@ -237,6 +238,12 @@
 - (void)xButtonPressed:(id)sender {
     if ([delegate respondsToSelector:@selector(xSignInputed)]) {
         [delegate xSignInputed];
+    }
+}
+
+- (void)searchButtonPressed:(id)sender {
+    if ([delegate respondsToSelector:@selector(abPadLockScreenSearchButtonPressed)]) {
+        [delegate abPadLockScreenSearchButtonPressed];
     }
 }
 

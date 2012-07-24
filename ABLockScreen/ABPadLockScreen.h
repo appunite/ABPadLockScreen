@@ -35,6 +35,7 @@
 - (void) backspaceInputed;
 - (void) xSignInputed;
 - (void) sign978Inputed;
+- (void) abPadLockScreenSearchButtonPressed;
 @end
 
 @interface ABPadLockScreen : UIViewController
