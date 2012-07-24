@@ -187,8 +187,12 @@
     
     UIButton *blankButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [blankButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateNormal];
-    [blankButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateSelected];
-    [blankButton setUserInteractionEnabled:NO];
+    [blankButton setBackgroundImage:[UIImage imageNamed:@"blank_button_selected"] forState:UIControlStateHighlighted];
+    [blankButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0]];
+    [blankButton setTitle:NSLocalizedString(@"Search", nil) forState:UIControlStateNormal];
+    [blankButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [blankButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [blankButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 3.0, 0.0)];
     [blankButton setFrame:CGRectMake(CGRectGetMinX(sign978Button.frame), CGRectGetMaxY(sign978Button.frame) + 1, leftButtonWidth, buttonHeight)];
     [self.view addSubview:blankButton];
 
