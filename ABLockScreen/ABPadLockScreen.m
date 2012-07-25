@@ -185,6 +185,18 @@
     [xButton addTarget:self action:@selector(xButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:xButton];    
     
+    
+    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clearButton setBackgroundImage:[UIImage imageNamed:@"clear_button"] forState:UIControlStateNormal];
+    [clearButton setBackgroundImage:[UIImage imageNamed:@"clear_button_selected"] forState:UIControlStateHighlighted];
+    [clearButton addTarget:self action:@selector(backSpaceButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [clearButton setFrame:CGRectMake(CGRectGetMinX(sign978Button.frame),
+                                     CGRectGetMaxY(sign978Button.frame) + 1,
+                                     leftButtonWidth + middleButtonWidth + 1,
+                                     buttonHeight)];
+    [self.view addSubview:clearButton];
+
+    
     UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateNormal];
     [searchButton setBackgroundImage:[UIImage imageNamed:@"blank_button_selected"] forState:UIControlStateHighlighted];
@@ -193,21 +205,9 @@
     [searchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [searchButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 3.0, 0.0)];
-    [searchButton setFrame:CGRectMake(CGRectGetMinX(sign978Button.frame), CGRectGetMaxY(sign978Button.frame) + 1, leftButtonWidth, buttonHeight)];
+    [searchButton setFrame:CGRectMake(CGRectGetMaxX(clearButton.frame) + 1, CGRectGetMinY(clearButton.frame), leftButtonWidth, buttonHeight)];
     [searchButton addTarget:self action:@selector(searchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchButton];
-
-    
-    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearButton setBackgroundImage:[UIImage imageNamed:@"clear_button"] forState:UIControlStateNormal];
-    [clearButton setBackgroundImage:[UIImage imageNamed:@"clear_button_selected"] forState:UIControlStateHighlighted];
-    [clearButton addTarget:self action:@selector(backSpaceButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [clearButton setFrame:CGRectMake(CGRectGetMaxX(searchButton.frame) + 1,
-                                     CGRectGetMinY(searchButton.frame),
-                                     middleButtonWidth + rightButtonWidth,
-                                     buttonHeight)];
-    [self.view addSubview:clearButton];
-        
 }
 
 - (void)viewDidUnload
