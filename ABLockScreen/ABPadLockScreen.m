@@ -197,17 +197,17 @@
     [self.view addSubview:clearButton];
 
     
-    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [searchButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateNormal];
-    [searchButton setBackgroundImage:[UIImage imageNamed:@"blank_button_selected"] forState:UIControlStateHighlighted];
-    [searchButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0]];
-    [searchButton setTitle:NSLocalizedString(@"Search", nil) forState:UIControlStateNormal];
-    [searchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [searchButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 3.0, 0.0)];
-    [searchButton setFrame:CGRectMake(CGRectGetMaxX(clearButton.frame) + 1, CGRectGetMinY(clearButton.frame), leftButtonWidth, buttonHeight)];
-    [searchButton addTarget:self action:@selector(searchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:searchButton];
+    _specialButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_specialButton setBackgroundImage:[UIImage imageNamed:@"blank_button"] forState:UIControlStateNormal];
+    [_specialButton setBackgroundImage:[UIImage imageNamed:@"blank_button_selected"] forState:UIControlStateHighlighted];
+    [_specialButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0]];
+    [_specialButton setTitle:NSLocalizedString(@"Search", nil) forState:UIControlStateNormal];
+    [_specialButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_specialButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [_specialButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 3.0, 0.0)];
+    [_specialButton setFrame:CGRectMake(CGRectGetMaxX(clearButton.frame) + 1, CGRectGetMinY(clearButton.frame), leftButtonWidth, buttonHeight)];
+    [_specialButton addTarget:self action:@selector(searchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_specialButton];
 }
 
 - (void)viewDidUnload
@@ -221,6 +221,10 @@
 {
     // Return YES for supported orientations
 	return NO;
+}
+
+- (void) setSpecialButtonTitle:(NSString *)text {
+    [_specialButton setTitle:text forState:UIControlStateNormal];
 }
 
 - (void)backSpaceButtonTapped:(id)sender {

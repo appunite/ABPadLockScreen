@@ -38,9 +38,13 @@
 - (void) abPadLockScreenSearchButtonPressed;
 @end
 
-@interface ABPadLockScreen : UIViewController
+@interface ABPadLockScreen : UIViewController {
+    UIButton *_specialButton;
+}
 @property (nonatomic, weak) id<ABPadLockScreenDelegate> delegate;
 
 - (id)initWithDelegate:(id<ABPadLockScreenDelegate>)aDelegate;
+- (void) setSpecialButtonTitle:(NSString *)text;
+
 
 @end
